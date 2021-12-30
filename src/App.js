@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { AddMessage } from './Components/AddMessage';
+import { ViewMessage } from './Components/ViewMessage';
+
+
 
 function App() {
+  const [openModal, setOpenModal] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button style={{marginTop:"20px",marginRight:"5px"}} onClick={() =>setOpenModal(true)}>Add Message</button>
+      <button onClick={() =>setOpenModal(false)} style={{marginTop:"20px",marginRight:"5px"}}>View Message</button>
+      {openModal ? <AddMessage/> : <ViewMessage/>}
     </div>
   );
 }
